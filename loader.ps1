@@ -1,4 +1,5 @@
 Add-Type -AssemblyName presentationframework
+[System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") | out-null
 
 [xml]$xaml = @"
 
@@ -401,18 +402,41 @@ $Menu_EAS.Add_Click({
 $Btn_EnableEAS.Add_Click({
     $Txt_EASOutput.Text = "Debug TEST"
     $EAS_User = $Txt_EASUser.Text
+    $ExchVers = get-mailbox -identity $EAS_User | Select -ExpandProperty ExchangeVersion
 
     if($Rd_SingleEAS.IsChecked -eq $true){
-        $Txt_EASOutput.Text = "Enable eas for single user" + $EAS_User
+        $Txt_EASOutput.Text = "Enable eas for single user " + $EAS_User
     }
     if($Rd_BulkEAS.IsChecked -eq $true){
         $Txt_EASOutput.Text = "Bulk EAS Activation"
     }
     if($Rd_DisableEAS.IsChecked -eq $true){
-        $Txt_EASOutput.Text = "Disable EAS for user" + $EAS_User
+        $Txt_EASOutput.Text = "Disable EAS for user " + $EAS_User
     }
     if($Rd_CheckEAS.IsChecked -eq $true){
-        $Txt_EASOutput.Text = "Check status for user" + $EAS_User
+
+        $StatusEAS = get-casmailbox -identity $EAS_User | select -ExpandProperty ActiveSyncEnabled
+        if($StatusEAS -eq "true"){
+            #[System.Windows.Forms.MessageBox]::Show("Activesync is enabled for " + $EAS_User , "ActiveSync Status")
+            
+            
+
+            if ($ExchVers = "0.20 (15.0.0.0)") {
+                write-host "Exch2013 user - running Get-MobileDevice"
+                #get-MobileDevice -mailbox $EAS_User | Select DeviceType,DeviceID | Out-File tmp.txt
+                #$Txt_EASOutput.Text = Get-Content tmp.Txt 
+            }  
+            if ($ExchVers = "0.1 (8.0.535.0)"){
+                write-host "Exch2007 user - running Get-MobileDevice"
+                #Get-ActiveSyncDeviceStatistics -mailbox $Eas_User | Select DeviceType,DeviceID | Out-File tmp.txt
+                #$Txt_EASOutput.Text = Get-Content tmp.Txt 
+            }
+
+
+        }
+        else{
+            $Txt_EASOutput.Text = "EAS Is Disabled for " + $EAS_User
+        }
     }
 })
 
