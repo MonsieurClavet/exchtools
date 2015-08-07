@@ -242,13 +242,13 @@ Add-Type -AssemblyName presentationframework
 
         </Grid>
 
-        <Grid x:Name="Grid_EAS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="274" Margin="4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="802" Visibility="Hidden" >
+        <Grid x:Name="Grid_EAS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="274" Margin="4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="802" >
 
             <Label Content="User(s): " HorizontalAlignment="Left" Margin="125,53,0,0" VerticalAlignment="Top"/>
 
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="195,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name ="Txt_EASUser" HorizontalAlignment="Left" Height="23" Margin="195,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-            <TextBox HorizontalAlignment="Left" Height="167" Margin="395.378,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="397" IsUndoEnabled="True" IsReadOnly="True" IsEnabled="False" RenderTransformOrigin="0.5,0.5" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
+            <TextBox x:Name="Txt_EASOutput" HorizontalAlignment="Left" Height="167" Margin="395.378,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="397" IsUndoEnabled="True" IsReadOnly="True" IsEnabled="False" RenderTransformOrigin="0.5,0.5" AcceptsReturn="True" VerticalScrollBarVisibility="Visible">
 
                 <TextBox.RenderTransform>
 
@@ -270,27 +270,22 @@ Add-Type -AssemblyName presentationframework
 
             <StackPanel HorizontalAlignment="Left" Height="69" Margin="125,119,0,0" VerticalAlignment="Top" Width="187">
 
-                <RadioButton Content="Enable Single User" FontSize="12"/>
+                <RadioButton x:Name="Rd_SingleEAS" Content="Enable Single User" FontSize="12"/>
 
-                <RadioButton Content="Enable Bulk Users" FontSize="12"/>
+                <RadioButton x:Name="Rd_BulkEAS" Content="Enable Bulk Users" FontSize="12" IsEnabled="False"/>
 
-                <RadioButton Content="Disable User" FontSize="12"/>
+                <RadioButton x:Name="Rd_DisableEAS" Content="Disable User" FontSize="12"/>
 
-                <RadioButton Content="Check Status" FontSize="12"/>
+                <RadioButton x:Name="Rd_CheckEAS" Content="Check Status" FontSize="12"/>
 
             </StackPanel>
 
             <Button Content="Get-DeviceID" HorizontalAlignment="Left" Margin="398,18.993,0,0" VerticalAlignment="Top" Width="128" Height="19"/>
+            <Button x:Name="Btn_EnableEAS" Content="Go !" HorizontalAlignment="Left" Margin="125,188,0,0" VerticalAlignment="Top" Width="75"/>
 
         </Grid>
 
-
-
-
-
     </Grid>
-
-
 
 </Window>
 
@@ -328,29 +323,25 @@ $Lbl_LoggedUser.Content = "User logged in: " + $whoami
 
 Function ClearView{
 
-	$Grid_MailQuota.Visibility = "Hidden"
+    $Grid_MailQuota.Visibility = "Hidden"
 
-	$Grid_MHCIntraFID.Visibility = "Hidden"
+    $Grid_MHCIntraFID.Visibility = "Hidden"
 
-	$Grid_OOOF.Visibility = "Hidden"
+    $Grid_OOOF.Visibility = "Hidden"
 
-	$Grid_EAS.Visibility = "Hidden"
+    $Grid_EAS.Visibility = "Hidden"
 
 }
 
 #endregion
 
-
-
-
-
 #region Menu Button
 
 $Menu_MailboxPerm.Add_Click({
 
-	ClearView
+    ClearView
 
-	$Window.Title = "XAML :: Exchange Admin Tools - Mailbox Permission"
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Permission"
 
 })
 
@@ -358,11 +349,11 @@ $Menu_MailboxPerm.Add_Click({
 
 $Menu_Quota.Add_Click({
 
-	Clearview
+    Clearview
 
-	$Grid_MailQuota.Visibility = "Visible"
+    $Grid_MailQuota.Visibility = "Visible"
 
-	$Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota"
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota"
 
 })
 
@@ -370,11 +361,11 @@ $Menu_Quota.Add_Click({
 
 $Menu_MHCIntraFID.Add_Click({
 
-	ClearView
+    ClearView
 
-	$Grid_MHCIntraFID.Visibility = "Visible"
+    $Grid_MHCIntraFID.Visibility = "Visible"
 
-	$Window.Title = "XAML :: Exchange Admin Tools - MHC Intranet FID Creation"
+    $Window.Title = "XAML :: Exchange Admin Tools - MHC Intranet FID Creation"
 
 })
 
@@ -382,11 +373,11 @@ $Menu_MHCIntraFID.Add_Click({
 
 $Menu_OOOF.Add_Click({
 
-	ClearView
+    ClearView
 
-	$Grid_OOOF.Visibility = "Visible"
+    $Grid_OOOF.Visibility = "Visible"
 
-	$Window.Title = "XAML :: Exchange Admin Tools - Out Of Office"
+    $Window.Title = "XAML :: Exchange Admin Tools - Out Of Office"
 
 })
 
@@ -394,13 +385,37 @@ $Menu_OOOF.Add_Click({
 
 $Menu_EAS.Add_Click({
 
-	ClearView
+    ClearView
 
-	$Grid_EAS.Visibility = "Visible"
+    $Grid_EAS.Visibility = "Visible"
 
-	$Window.Title = "XAML :: Exchange Admin Tools - Active Sync"
+    $Window.Title = "XAML :: Exchange Admin Tools - Active Sync"
 
 })
+
+#endregion
+
+
+#region EAS Scripts
+
+$Btn_EnableEAS.Add_Click({
+    $Txt_EASOutput.Text = "Debug TEST"
+    $EAS_User = $Txt_EASUser.Text
+
+    if($Rd_SingleEAS.IsChecked -eq $true){
+        $Txt_EASOutput.Text = "Enable eas for single user" + $EAS_User
+    }
+    if($Rd_BulkEAS.IsChecked -eq $true){
+        $Txt_EASOutput.Text = "Bulk EAS Activation"
+    }
+    if($Rd_DisableEAS.IsChecked -eq $true){
+        $Txt_EASOutput.Text = "Disable EAS for user" + $EAS_User
+    }
+    if($Rd_CheckEAS.IsChecked -eq $true){
+        $Txt_EASOutput.Text = "Check status for user" + $EAS_User
+    }
+})
+
 
 #endregion
 
