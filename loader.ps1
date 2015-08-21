@@ -161,7 +161,7 @@ Add-Type -AssemblyName presentationframework
 
                 <RadioButton x:Name="RD_OOOFBellCustom" Content="Custom Out of Office" FontSize="12"/>
 
-                <RadioButton x:Name="RD_OOOFBellDisable" Content="Disable" FontSize="12"/>
+                <RadioButton x:Name="RD_OOOFDisabled" Content="Disable" FontSize="12"/>
 
             </StackPanel>
 
@@ -424,7 +424,7 @@ $Btn_ApplyOOOF.Add_Click({
         
         if ($RD_OOOFDisabled.IsChecked -eq $True){
             $OOOFUser = $Txt_OOOFUser.Text
-            Set-MailboxAutoReplyConfiguration $OOOFUser -AutoReplyState Disabled
+            Set-MailboxAutoReplyConfiguration -Identity $OOOFUser -AutoReplyState Disabled
             [System.Windows.Forms.MessageBox]::Show("Out of Office has been disabled for `n" + $OOOFUser ,"Out of Office Disabled")
         }
 
