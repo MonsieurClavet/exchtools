@@ -159,7 +159,7 @@ Add-Type -AssemblyName presentationframework
 
                 <RadioButton x:Name="RD_OOOFBellMob" Content="Bell Mobility Out of Office" FontSize="12"/>
 
-                <RadioButton x:Name="RD_OOOFBellCustom" Content="Custom Out of Office" FontSize="12"/>
+                <RadioButton x:Name="RD_OOOFBellCustom" Content="Custom Out of Office" FontSize="12" IsEnabled="False"/>
 
                 <RadioButton x:Name="RD_OOOFDisabled" Content="Disable" FontSize="12"/>
 
@@ -243,7 +243,7 @@ Add-Type -AssemblyName presentationframework
 
         </Grid>
 
-        <Grid x:Name="Grid_EAS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="274" Margin="4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="802" >
+        <Grid x:Name="Grid_EAS" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="274" Margin="4,4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="802" Visibility="Hidden" >
 
             <Label Content="User(s): " HorizontalAlignment="Left" Margin="125,53,0,0" VerticalAlignment="Top"/>
 
