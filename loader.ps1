@@ -155,13 +155,13 @@ Add-Type -AssemblyName presentationframework
 
             <StackPanel HorizontalAlignment="Left" Height="68" Margin="301,133.993,0,0" VerticalAlignment="Top" Width="196">
 
-                <RadioButton Content="Bell Canada Out of Office" FontSize="12"/>
+                <RadioButton x:Name="RD_OOOFBellCan" Content="Bell Canada Out of Office" FontSize="12"/>
 
-                <RadioButton Content="Bell Mobility Out of Office" FontSize="12"/>
+                <RadioButton x:Name="RD_OOOFBellMob" Content="Bell Mobility Out of Office" FontSize="12"/>
 
-                <RadioButton Content="Custom Out of Office" FontSize="12"/>
+                <RadioButton x:Name="RD_OOOFBellCustom" Content="Custom Out of Office" FontSize="12"/>
 
-                <RadioButton Content="Disable" FontSize="12"/>
+                <RadioButton x:Name="RD_OOOFBellDisable" Content="Disable" FontSize="12"/>
 
             </StackPanel>
 
@@ -395,6 +395,44 @@ $Menu_EAS.Add_Click({
 })
 
 #endregion
+
+
+
+#region OOOF GRID
+
+$Btn_ApplyOOOF.Add_Click({
+        if ($RD_OOOFBellCan.Checked -eq $True){
+            $OOOFUser = $Txt_OOOFUser.Text
+            $BellCanadaOOOF = "<p>Thank you for contacting Bell Canada.  The individual you are trying to reach is no longer with Bell.  If you have an alternate contact within our team, please redirect your inquiry to that individual.  We will be making every effort to re-connect you with a new Bell contact in the very near future. Thank you for your understanding.</p></br></hr><p>Merci d&rsquo;avoir communiqu&eacute; avec Bell Canada. La personne que vous voulez joindre ne travaille plus avec nous. Si vous connaissez une autre personne dans notre &eacute;quipe, veuillez lui acheminer votre demande. Nous ferons notre possible pour vous orienter vers une nouvelle personne-ressource de Bell rapidement. Merci de votre compr&eacute;hension.</p></br>"
+            Set-MailboxAutoReplyConfiguration -Identity $OOOFUser -AutoReplyState Enabled -InternalMessage $BellCanadaOOOF -ExternalMessage $BellCanadaOOOF
+            [System.Windows.Forms.MessageBox]::Show("Bell Canada Out of Office has been applied to `n" + $OOOFUser ,"Bell Canada Out of Office")
+        }
+        
+        if ($RD_OOOFBellMob.Checked -eq $True){
+            $OOOFUser = $Txt_OOOFUser.Text
+            $BellMobilityOOOF = "<p>Thank you for contacting Bell Mobility.  The individual you are trying to reach is no longer with Bell.  If you have an alternate contact within our team, please redirect your inquiry to that individual.  We will be making every effort to re-connect you with a new Bell contact in the very near future. Thank you for your understanding.</p></br></hr><p>Merci d&rsquo;avoir communiqu&eacute; avec Bell Mobility. La personne que vous voulez joindre ne travaille plus avec nous. Si vous connaissez une autre personne dans notre &eacute;quipe, veuillez lui acheminer votre demande. Nous ferons notre possible pour vous orienter vers une nouvelle personne-ressource de Bell rapidement. Merci de votre compr&eacute;hension.</p></br>"
+            Set-MailboxAutoReplyConfiguration -Identity $OOOFUser -AutoReplyState Enabled -InternalMessage $BellMobilityOOOF -ExternalMessage $BellMobilityOOOF
+            [System.Windows.Forms.MessageBox]::Show("Bell Mobility Out of Office has been applied to `n" + $OOOFUser ,"Bell Mobility Out of Office")
+        }
+        
+        if ($RD_OOOFCustom.Checked -eq $True){
+            $OOOFUser = $Txt_OOOFUser.Text
+            $CustomOOOF = $TXT_OOOFCustom.Text
+            Set-MailboxAutoReplyConfiguration -Identity $OOOFUser -AutoReplyState Enabled -InternalMessage $CustomOOOF -ExternalMessage $CustomOOOF
+            [System.Windows.Forms.MessageBox]::Show("Custom Out of Office has been applied to `n" + $OOOFUser ,"Custom Out of Office")
+        }
+        
+        if ($RD_OOOFDisabled.Checked -eq $True){
+            $OOOFUser = $Txt_OOOFUser.Text
+            Set-MailboxAutoReplyConfiguration $OOOFUser -AutoReplyState Disabled
+            [System.Windows.Forms.MessageBox]::Show("Out of Office has been disabled for `n" + $OOOFUser ,"Out of Office Disabled")
+        }
+
+    })
+
+#endregion 
+
+
 
 
 #region ActiveSYNC GRID 
