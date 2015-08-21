@@ -346,8 +346,6 @@ $Menu_MailboxPerm.Add_Click({
 
 })
 
-
-
 $Menu_Quota.Add_Click({
 
     Clearview
@@ -357,8 +355,6 @@ $Menu_Quota.Add_Click({
     $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota"
 
 })
-
-
 
 $Menu_MHCIntraFID.Add_Click({
 
@@ -370,8 +366,6 @@ $Menu_MHCIntraFID.Add_Click({
 
 })
 
-
-
 $Menu_OOOF.Add_Click({
 
     ClearView
@@ -381,8 +375,6 @@ $Menu_OOOF.Add_Click({
     $Window.Title = "XAML :: Exchange Admin Tools - Out Of Office"
 
 })
-
-
 
 $Menu_EAS.Add_Click({
 
@@ -396,6 +388,37 @@ $Menu_EAS.Add_Click({
 
 #endregion
 
+
+#region Mailbox Quota
+
+#Grid_MailQuota
+#-----------------------------
+# PS cmdlet
+#-----------------------------
+# TotalItemSize
+# TotalDeletedItemSize
+# DatabaseIssueWarningQuota
+# DatabaseProhibitSendQuota
+# DatabaseProhibitSendReceiveQuota
+#
+#
+# Txt_DefaultQuota
+# Txt_CurrentMailboxSize
+# Txt_TotalDeletedItems
+# Txt_IssueWarning
+# Txt_ProhibitSend
+#
+#-----------------------------
+
+$Btn_RefreshQuota.Add_Click({
+
+    #$MbxTotalCurrentSize = (Get-MailboxStatistics -Identity Maxence.Caron).TotalItemSize.Value
+    $Txt_CurrentMailboxSize.Text = (Get-MailboxStatistics -Identity Maxence.Caron).TotalItemSize.Value
+
+    })
+
+
+#endregion MailboxQuota
 
 
 #region OOOF GRID
@@ -414,7 +437,7 @@ $Btn_ApplyOOOF.Add_Click({
             Set-MailboxAutoReplyConfiguration -Identity $OOOFUser -AutoReplyState Enabled -InternalMessage $BellMobilityOOOF -ExternalMessage $BellMobilityOOOF
             [System.Windows.Forms.MessageBox]::Show("Bell Mobility Out of Office has been applied to `n" + $OOOFUser ,"Bell Mobility Out of Office")
         }
-        
+        #DISABLE FOR NOW
         if ($RD_OOOFCustom.IsChecked -eq $True){
             $OOOFUser = $Txt_OOOFUser.Text
             $CustomOOOF = $TXT_OOOFCustom.Text
