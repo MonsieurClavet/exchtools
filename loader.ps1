@@ -397,10 +397,10 @@ $Menu_EAS.Add_Click({
 #endregion
 
 
-#region EAS Scripts
+#region ActiveSYNC GRID 
 
 $Btn_EnableEAS.Add_Click({
-    $Txt_EASOutput.Text = "Debug TEST"
+    
     $EAS_User = $Txt_EASUser.Text
     $ExchVers = get-mailbox -identity $EAS_User | Select -ExpandProperty ExchangeVersion
 
@@ -417,25 +417,21 @@ $Btn_EnableEAS.Add_Click({
 
         $StatusEAS = get-casmailbox -identity $EAS_User | select -ExpandProperty ActiveSyncEnabled
         if($StatusEAS -eq "true"){
-            #[System.Windows.Forms.MessageBox]::Show("Activesync is enabled for " + $EAS_User , "ActiveSync Status")
+            [System.Windows.Forms.MessageBox]::Show("Activesync is enabled for " + $EAS_User , "ActiveSync Status")
             
-            
+            if ($ExchVers -eq "0.20 (15.0.0.0)") {
+                get-MobileDevice -mailbox $EAS_User | Select DeviceType,DeviceID | Out-File tmp.txt
+                $Txt_EASOutput.Text = Get-Content tmp.txt 
 
-            if ($ExchVers = "0.20 (15.0.0.0)") {
-                write-host "Exch2013 user - running Get-MobileDevice"
-                #get-MobileDevice -mailbox $EAS_User | Select DeviceType,DeviceID | Out-File tmp.txt
-                #$Txt_EASOutput.Text = Get-Content tmp.Txt 
             }  
-            if ($ExchVers = "0.1 (8.0.535.0)"){
-                write-host "Exch2007 user - running Get-MobileDevice"
+            if ($ExchVers -eq "0.1 (8.0.535.0)"){
                 #Get-ActiveSyncDeviceStatistics -mailbox $Eas_User | Select DeviceType,DeviceID | Out-File tmp.txt
-                #$Txt_EASOutput.Text = Get-Content tmp.Txt 
+                $Txt_EASOutput.Text = "User is on Exchange 2007, please use the following cmdlet on a Exch2007 powershell Get-ActiveSyncDeviceStatistics -mailbox "+ $Eas_User + "| Select DeviceType,DeviceID"
             }
-
 
         }
         else{
-            $Txt_EASOutput.Text = "EAS Is Disabled for " + $EAS_User
+            [System.Windows.Forms.MessageBox]::Show("Activesync is disabled for " + $EAS_User , "ActiveSync Status")
         }
     }
 })
