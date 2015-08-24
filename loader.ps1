@@ -428,13 +428,19 @@ $Menu_EAS.Add_Click({
 
 $Btn_MHCFID_Create.Add_Click({
 
-    write-host $Txt_MHCFID_Alias.Text
-    write-host $Txt_MHCFID_DN.Text
-    write-host $Txt_MHCFID_Email.Text
-    write-host $Txt_MHCFID_Owner.Text
-    write-host $Txt_MHCFID_Backup.Text
+    $MHC_FID_Alias = $Txt_MHCFID_Alias.Text
+    $MHCFID_DN = $Txt_MHCFID_DN.Text
+    $MHCFID_Email = $Txt_MHCFID_Email.Text
+    $MHCFID_Owner = $Txt_MHCFID_Owner.Text
+    $MHCFID_Backup = $Txt_MHCFID_Backup.Text    
 
-    write-host New-Mailbox -shared -Name "$Txt_MHCFID_Alias" -DisplayName "$Txt_MHCFID_DN" -Alias $Txt_MHCFID_Alias
+    write-host $MHCFID_Alias
+    write-host $MHCFID_DN
+    write-host $MHCFID_Email
+    write-host $MHCFID_Owner
+    write-host $MHCFID_Backup
+    
+    write-host New-Mailbox -shared -Name "$MHCFID_Alias" -DisplayName "$MHCFID_DN" -Alias $MHCFID_Alias
     #New-Mailbox -shared -Name "$Txt_MHCFID_Alias" -DisplayName "$Txt_MHCFID_DN" -Alias $Txt_MHCFID_Alias
 
     })
