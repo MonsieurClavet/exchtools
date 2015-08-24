@@ -407,6 +407,7 @@ $Menu_EAS.Add_Click({
 # Txt_TotalDeletedItems
 # Txt_IssueWarning
 # Txt_ProhibitSend
+# Txt_ProhibitSendReceive
 #
 # Txt_Username
 #-----------------------------
@@ -415,10 +416,15 @@ $Btn_RefreshQuota.Add_Click({
 
     $User2search = $Txt_Username.Text
 
-    #$MbxTotalCurrentSize = (Get-MailboxStatistics -Identity Maxence.Caron).TotalItemSize.Value
+    $MailboxDefaultQuotaStatus = Get-Mailbox -Identity $User2search | Select -ExpandProperty UseDatabaseQuota*
+
+    
+    $Txt_DefaultQuota.Text = $MailboxDefaultQuotaStatus
     $Txt_CurrentMailboxSize.Text = (Get-MailboxStatistics -Identity $User2search).TotalItemSize.Value
     $Txt_TotalDeletedItems.Text = (Get-MailboxStatistics -Identity $User2search).TotalDeletedItemSize.Value
     $Txt_IssueWarning.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseIssueWarningQuota.Value 
+    $Txt_ProhibitSend.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendQuota.Value 
+    $Txt_ProhibitSendReceive.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendReceiveQuota.Value 
 
     })
 
