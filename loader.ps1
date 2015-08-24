@@ -197,7 +197,7 @@ Add-Type -AssemblyName presentationframework
 
             </StackPanel>
 
-            <StackPanel HorizontalAlignment="Left" Height="95" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
+            <StackPanel HorizontalAlignment="Left" Height="128" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
 
                 <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap" FontSize="10"/>
 
@@ -211,7 +211,7 @@ Add-Type -AssemblyName presentationframework
 
             </StackPanel>
 
-            <StackPanel HorizontalAlignment="Left" Height="100" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
+            <StackPanel HorizontalAlignment="Left" Height="128" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
 
                 <Label Content="SamAccountName" HorizontalAlignment="Right"/>
 
