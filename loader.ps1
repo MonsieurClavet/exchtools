@@ -334,6 +334,13 @@ Function ClearView{
 
 }
 
+Function MsgBox([string]$arg1, [string]$arg2){
+
+
+    [System.Windows.Forms.MessageBox]::Show($arg1 , $arg2)
+
+}
+
 #endregion
 
 #region Menu Button
@@ -416,15 +423,23 @@ $Btn_RefreshQuota.Add_Click({
 
     $User2search = $Txt_Username.Text
 
-    $MailboxDefaultQuotaStatus = Get-Mailbox -Identity $User2search | Select -ExpandProperty UseDatabaseQuota*
+    if($User2search -eq ""){
 
-    
-    $Txt_DefaultQuota.Text = $MailboxDefaultQuotaStatus
-    $Txt_CurrentMailboxSize.Text = (Get-MailboxStatistics -Identity $User2search).TotalItemSize.Value
-    $Txt_TotalDeletedItems.Text = (Get-MailboxStatistics -Identity $User2search).TotalDeletedItemSize.Value
-    $Txt_IssueWarning.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseIssueWarningQuota.Value 
-    $Txt_ProhibitSend.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendQuota.Value 
-    $Txt_ProhibitSendReceive.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendReceiveQuota.Value 
+MsgBox("Text","Test")
+
+    }
+    else{
+        $MailboxDefaultQuotaStatus = Get-Mailbox -Identity $User2search | Select -ExpandProperty UseDatabaseQuota*
+
+        $Txt_DefaultQuota.Text = $MailboxDefaultQuotaStatus
+        $Txt_CurrentMailboxSize.Text = (Get-MailboxStatistics -Identity $User2search).TotalItemSize.Value
+        $Txt_TotalDeletedItems.Text = (Get-MailboxStatistics -Identity $User2search).TotalDeletedItemSize.Value
+        $Txt_IssueWarning.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseIssueWarningQuota.Value 
+        $Txt_ProhibitSend.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendQuota.Value 
+        $Txt_ProhibitSendReceive.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendReceiveQuota.Value 
+    }
+
+   
 
     })
 
