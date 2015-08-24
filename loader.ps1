@@ -29,9 +29,9 @@ Add-Type -AssemblyName presentationframework
 
         </Grid.RowDefinitions>
 
-        <StatusBar HorizontalAlignment="Center" Height="30" Margin="-2,278,4,0" VerticalAlignment="Top" Width="810" BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <StatusBar HorizontalAlignment="Center" Height="25" Margin="-2,283,4,0" VerticalAlignment="Top" Width="810" BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2">
 
-            <Label x:Name="Lbl_LoggedUser" Content="User logged in: " Width="619" FontStyle="Italic" FontWeight="SemiBold" Height="23"/>
+            <Label x:Name="Lbl_LoggedUser" Content="User logged in: " Width="600" FontStyle="Italic" FontWeight="SemiBold" Height="23" FontSize="10.667"/>
 
             <Separator Visibility="Hidden"/>
 
@@ -93,9 +93,9 @@ Add-Type -AssemblyName presentationframework
 
             <Separator Margin="0" Width="62.334" Visibility="Hidden"/>
 
-            <Button x:Name="Btn_SearchUser" Content="Search" Width="59" Height="17" FontSize="10"/>
+            <Button x:Name="Btn_SearchUser" Content="Search" Width="59" Height="17" FontSize="9"/>
 
-            <TextBox x:Name="Txt_Username" Width="174" ToolTip="Specify User to search" IsHitTestVisible="True" AllowDrop="False"/>
+            <TextBox x:Name="Txt_Username" Width="174" ToolTip="Specify User to search" IsHitTestVisible="True" AllowDrop="False" FontSize ="9"/>
 
         </Menu>
 
