@@ -183,33 +183,37 @@ Add-Type -AssemblyName presentationframework
 
         </Grid>
 
-        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808"  Visibility="Hidden" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1" IsEnabled="False">
+        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808"  Visibility="Hidden" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1" IsEnabled="True">
 
             <StackPanel HorizontalAlignment="Left" Height="61" Margin="140,31,0,0" VerticalAlignment="Top" Width="117">
 
-                <RadioButton Content="Bell Canada" FontSize="12"/>
+                <RadioButton x:Name="Rd_MHCFID_BC" Content="Bell Canada" FontSize="12"/>
 
-                <RadioButton Content="Bell Mobility" FontSize="12"/>
+                <RadioButton x:Name="Rd_MHCFID_BM" Content="Bell Mobility" FontSize="12"/>
 
-                <RadioButton Content="Bell Express Vu" FontSize="12"/>
+                <RadioButton x:Name="Rd_MHCFID_BEV" Content="Bell Express Vu" FontSize="12"/>
 
-                <RadioButton Content="Bell Distribution" FontSize="12"/>
+                <RadioButton x:Name="Rd_MHCFID_BDI" Content="Bell Distribution" FontSize="12"/>
 
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Height="95" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap"/>
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap"/>
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap"/>
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap"/>
+
+                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap"/>
 
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Height="100" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
+
+                <Label Content="Alias / SamAccountName" HorizontalAlignment="Right"/>
 
                 <Label Content="Display Name" HorizontalAlignment="Right"/>
 
@@ -239,7 +243,7 @@ Add-Type -AssemblyName presentationframework
 
             <Button Content="Grant Permissions" HorizontalAlignment="Left" Margin="607,136,0,0" VerticalAlignment="Top" Width="111"/>
 
-            <Button Content="Create FID" HorizontalAlignment="Left" Margin="140,216,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="-1.216,0.05"/>
+            <Button x:Name="Btn_MHCFID_Create" Content="Create FID" HorizontalAlignment="Left" Margin="140,216,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="-1.216,0.05"/>
 
         </Grid>
 
@@ -334,12 +338,12 @@ Function ClearView{
 
 }
 
-Function MsgBox([string]$arg1, [string]$arg2){
-
-
-    [System.Windows.Forms.MessageBox]::Show($arg1 , $arg2)
-
-}
+#Function MsgBox([string]$arg1, [string]$arg2){
+#
+#
+#   [System.Windows.Forms.MessageBox]::Show("$arg1" ,"$arg2")
+#
+#}
 
 #endregion
 
@@ -395,9 +399,44 @@ $Menu_EAS.Add_Click({
 
 #endregion
 
+#-----------------------------
+#region MHC Intranet FID Creation
+#-----------------------------
+#Grid_MHCIntraFID
+#-----------------------------
+# PS cmdlet
+#-----------------------------
+#
+# New-Mailbox -Shared -Name "Sales Department" -DisplayName "Sales Department" -Alias Sales | Set-Mailbox -GrantSendOnBehalfTo MarketingSG | Add-MailboxPermission -User MarketingSG -AccessRights FullAccess -InheritanceType All
+#
+#-----------------------------
+# Variables
+#-----------------------------
+# Txt_MHCFID_DN
+# Txt_MHCFID_Email
+# Txt_MHCFID_Owner
+# Txt_MHCFID_Backup
+#
+# Rd_MHCFID_BC
+# Rd_MHCFID_BM
+# Rd_MHCFID_BEV
+# Rd_MHCFID_BDI
+#
+# Btn_MHCFID_Create
+#-----------------------------
 
+$Btn_MHCFID_Create.Add_Click({
+
+    write-host $Txt_MHCFID_DN.Text
+    write-host $Txt_MHCFID_Email.Text
+    write-host $Txt_MHCFID_Owner.Text
+    write-host $Txt_MHCFID_Backup.Text
+
+    })
+
+
+#-----------------------------
 #region Mailbox Quota
-
 #Grid_MailQuota
 #-----------------------------
 # PS cmdlet
@@ -408,7 +447,9 @@ $Menu_EAS.Add_Click({
 # DatabaseProhibitSendQuota
 # DatabaseProhibitSendReceiveQuota
 #
-#
+#-----------------------------
+# Variables
+#-----------------------------
 # Txt_DefaultQuota
 # Txt_CurrentMailboxSize
 # Txt_TotalDeletedItems
@@ -422,15 +463,12 @@ $Menu_EAS.Add_Click({
 $Btn_RefreshQuota.Add_Click({
 
     $User2search = $Txt_Username.Text
-
+    
     if($User2search -eq ""){
-
-MsgBox("Text","Test")
-
+        [System.Windows.Forms.MessageBox]::Show("User field cannot be empty" ,"Error - No user selected")
     }
     else{
         $MailboxDefaultQuotaStatus = Get-Mailbox -Identity $User2search | Select -ExpandProperty UseDatabaseQuota*
-
         $Txt_DefaultQuota.Text = $MailboxDefaultQuotaStatus
         $Txt_CurrentMailboxSize.Text = (Get-MailboxStatistics -Identity $User2search).TotalItemSize.Value
         $Txt_TotalDeletedItems.Text = (Get-MailboxStatistics -Identity $User2search).TotalDeletedItemSize.Value
@@ -439,9 +477,7 @@ MsgBox("Text","Test")
         $Txt_ProhibitSendReceive.Text = (Get-MailboxStatistics -Identity $User2search).DatabaseProhibitSendReceiveQuota.Value 
     }
 
-   
-
-    })
+ })
 
 
 #endregion MailboxQuota
