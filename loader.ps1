@@ -199,29 +199,29 @@ Add-Type -AssemblyName presentationframework
 
             <StackPanel HorizontalAlignment="Left" Height="128" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
 
-                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap" FontSize="10"/>
+                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap" />
 
-                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap" FontSize="10"/>
+                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap" />
 
-                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap" FontSize="10"/>
+                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap" />
 
-                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap" FontSize="10"/>
+                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap" />
 
-                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap" FontSize="10"/>
+                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap"/>
 
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Height="128" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
 
-                <Label Content="SamAccountName" HorizontalAlignment="Right"/>
+                <Label Content="SamAccountName" HorizontalAlignment="Right" FontSize="10"/>
 
-                <Label Content="Display Name" HorizontalAlignment="Right"/>
+                <Label Content="Display Name" HorizontalAlignment="Right" FontSize="10"/>
 
-                <Label Content="Email Address" HorizontalAlignment="Right"/>
+                <Label Content="Email Address" HorizontalAlignment="Right" FontSize="10"/>
 
-                <Label Content="Owner" HorizontalAlignment="Right"/>
+                <Label Content="Owner" HorizontalAlignment="Right" FontSize="10"/>
 
-                <Label Content="Backup Owner" HorizontalAlignment="Right"/>
+                <Label Content="Backup Owner" HorizontalAlignment="Right" FontSize="10"/>
 
             </StackPanel>
 
