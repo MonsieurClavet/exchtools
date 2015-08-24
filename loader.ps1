@@ -199,21 +199,21 @@ Add-Type -AssemblyName presentationframework
 
             <StackPanel HorizontalAlignment="Left" Height="95" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
 
-                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap" FontSize="10"/>
 
-                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap" FontSize="10"/>
 
-                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap" FontSize="10"/>
 
-                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap" FontSize="10"/>
 
-                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap" FontSize="10"/>
 
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Height="100" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
 
-                <Label Content="Alias / SamAccountName" HorizontalAlignment="Right"/>
+                <Label Content="SamAccountName" HorizontalAlignment="Right"/>
 
                 <Label Content="Display Name" HorizontalAlignment="Right"/>
 
@@ -243,7 +243,7 @@ Add-Type -AssemblyName presentationframework
 
             <Button Content="Grant Permissions" HorizontalAlignment="Left" Margin="607,136,0,0" VerticalAlignment="Top" Width="111"/>
 
-            <Button x:Name="Btn_MHCFID_Create" Content="Create FID" HorizontalAlignment="Left" Margin="140,216,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="-1.216,0.05"/>
+            <Button x:Name="Btn_MHCFID_Create" Content="Create FID" HorizontalAlignment="Left" Margin="140,237,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="-1.216,0.05"/>
 
         </Grid>
 
@@ -412,6 +412,7 @@ $Menu_EAS.Add_Click({
 #-----------------------------
 # Variables
 #-----------------------------
+# Txt_MHCFID_Alias
 # Txt_MHCFID_DN
 # Txt_MHCFID_Email
 # Txt_MHCFID_Owner
@@ -427,6 +428,7 @@ $Menu_EAS.Add_Click({
 
 $Btn_MHCFID_Create.Add_Click({
 
+    write-host $Txt_MHCFID_Alias.Text
     write-host $Txt_MHCFID_DN.Text
     write-host $Txt_MHCFID_Email.Text
     write-host $Txt_MHCFID_Owner.Text
