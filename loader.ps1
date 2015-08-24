@@ -434,6 +434,9 @@ $Btn_MHCFID_Create.Add_Click({
     write-host $Txt_MHCFID_Owner.Text
     write-host $Txt_MHCFID_Backup.Text
 
+    write-host New-Mailbox -shared -Name "$Txt_MHCFID_Alias" -DisplayName "$Txt_MHCFID_DN" -Alias $Txt_MHCFID_Alias
+    #New-Mailbox -shared -Name "$Txt_MHCFID_Alias" -DisplayName "$Txt_MHCFID_DN" -Alias $Txt_MHCFID_Alias
+
     })
 
 
