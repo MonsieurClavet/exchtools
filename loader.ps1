@@ -507,8 +507,8 @@ $Btn_Calculate.Add_Click({
 
 $Btn_ApplyQuota.Add_Click({
 
-    $NewIssueWarningQuota = $Txt_CalcNewProhibit.Text
-    $NewProhibitSendQuota = $Txt_NewProhibSendRecv.Text
+    $NewIssueWarningQuota = $Txt_NewIssueWarn.Text
+    $NewProhibitSendQuota = $Txt_CalcNewProhibit.Text
     $NewProhibitSendReceiveQuota = $Txt_NewProhibSendRecv.Text
 
     $NewIssueWarningQuota = [STRING]$NewIssueWarningQuota + "MB"
