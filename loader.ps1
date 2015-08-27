@@ -499,7 +499,7 @@ $Btn_RefreshQuota.Add_Click({
 
 $Btn_Calculate.Add_Click({
 
-    [int]$Issue = Txt_CalcNewProhibit.Text
+    [int]$Issue = $Txt_CalcNewProhibit.Text
     $Txt_NewIssueWarn.Text = $issue - 50
     $Txt_NewProhibSendRecv.Text = $issue + 50
 
@@ -507,12 +507,12 @@ $Btn_Calculate.Add_Click({
 
 $Btn_ApplyQuota.Add_Click({
 
+    $NewIssueWarningQuota = $Txt_CalcNewProhibit.Text
     $NewProhibitSendQuota = $Txt_NewProhibSendRecv.Text
-    $NewIssueWarningQuota = $Txt_NewIssueWarn.Text
     $NewProhibitSendReceiveQuota = $Txt_NewProhibSendRecv.Text
 
-    $NewProhibitSendQuota = [STRING]$NewProhibitSendQuota + "MB"
     $NewIssueWarningQuota = [STRING]$NewIssueWarningQuota + "MB"
+    $NewProhibitSendQuota = [STRING]$NewProhibitSendQuota + "MB"
     $NewProhibitSendReceiveQuota = [STRING]$NewProhibitSendReceiveQuota + "MB"
 
     write-host "Issue Warning) " $NewIssueWarningQuota
