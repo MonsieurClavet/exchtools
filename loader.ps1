@@ -468,6 +468,12 @@ $Btn_MHCFID_Create.Add_Click({
 # Txt_IssueWarning
 # Txt_ProhibitSend
 # Txt_ProhibitSendReceive
+
+# Txt_NewIssueWarn
+# Txt_CalcNewProhibit
+# Txt_NewProhibSendRecv
+# Btn_Calculate
+# Btn_ApplyQuota
 #
 # Txt_Username
 #-----------------------------
@@ -490,6 +496,30 @@ $Btn_RefreshQuota.Add_Click({
     }
 
  })
+
+$Btn_Calculate.Add_Click({
+
+    [int]$Issue = Txt_CalcNewProhibit.Text
+    $Txt_NewIssueWarn.Text = $issue - 50
+    $Txt_NewProhibSendRecv.Text = $issue + 50
+
+    })
+
+$Btn_ApplyQuota.Add_Click({
+
+    $NewProhibitSendQuota = $Txt_NewProhibSendRecv.Text
+    $NewIssueWarningQuota = $Txt_NewIssueWarn.Text
+    $NewProhibitSendReceiveQuota = $Txt_NewProhibSendRecv.Text
+
+    $NewProhibitSendQuota = [STRING]$NewProhibitSendQuota + "MB"
+    $NewIssueWarningQuota = [STRING]$NewIssueWarningQuota + "MB"
+    $NewProhibitSendReceiveQuota = [STRING]$NewProhibitSendReceiveQuota + "MB"
+
+    write-host "Issue Warning) " $NewIssueWarningQuota
+    write-host "Prohibit Send) " $NewProhibitSendQuota
+    write-host "Prohibit S/R ) " $NewProhibitSendReceiveQuota  
+
+    })
 
 
 #endregion MailboxQuota
