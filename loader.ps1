@@ -1,5 +1,6 @@
 Add-Type -AssemblyName presentationframework
 [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") | out-null
+Import-Module ActiveDirectory
 
 [xml]$xaml = @"
 
@@ -121,9 +122,9 @@ Add-Type -AssemblyName presentationframework
 
             <TextBox x:Name="Txt_ProhibitSendReceive" HorizontalAlignment="Left" Height="23" Margin="33,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" IsReadOnly="True" Background="#FFB6B6B6"/>
 
-            <Label Content="Prohibit Send Quota" HorizontalAlignment="Left" Margin="194,155,0,0" VerticalAlignment="Top" Width="113"/>
+            <Label Content="Prohibit Send Quota" HorizontalAlignment="Left" Margin="194,155,0,0" VerticalAlignment="Top" Width="169"/>
 
-            <Label Content="Prohibit Send/Receive Quota" HorizontalAlignment="Left" Margin="194,183,0,0" VerticalAlignment="Top" Width="149"/>
+            <Label Content="Prohibit Send/Receive Quota" HorizontalAlignment="Left" Margin="194,183,0,0" VerticalAlignment="Top" Width="169"/>
 
             <Button x:Name="Btn_RefreshQuota" Content="Refresh" HorizontalAlignment="Left" Margin="93,220,0,0" VerticalAlignment="Top" Width="101"/>
 
@@ -137,7 +138,7 @@ Add-Type -AssemblyName presentationframework
 
             <Label Content="Prohibit Send Quota" HorizontalAlignment="Left" Margin="561,101,0,0" VerticalAlignment="Top" Width="152"/>
 
-            <Label Content="Prohibit Send/Receive Quota" HorizontalAlignment="Left" Margin="561,129,0,0" VerticalAlignment="Top" Width="152"/>
+            <Label Content="Prohibit Send/Receive Quota" HorizontalAlignment="Left" Margin="561,129,0,0" VerticalAlignment="Top" Width="181"/>
 
             <Button x:Name="Btn_Calculate" Content="Calculate" HorizontalAlignment="Left" Margin="486,163.993,0,0" VerticalAlignment="Top" Width="75"/>
 
@@ -440,7 +441,7 @@ $Btn_MHCFID_Create.Add_Click({
     write-host $MHCFID_Owner
     write-host $MHCFID_Backup
 
-    write-host New-Mailbox -shared -Name "$MHCFID_Alias" -DisplayName "$MHCFID_DN" -Alias $MHCFID_Alias
+    write-host New-Mailbox -shared -Name $MHCFID_Alias -DisplayName $MHCFID_DN -Alias $MHCFID_Alias
     #New-Mailbox -shared -Name "$Txt_MHCFID_Alias" -DisplayName "$Txt_MHCFID_DN" -Alias $Txt_MHCFID_Alias
 
     })
@@ -572,9 +573,6 @@ $Btn_EnableEAS.Add_Click({
 
 
 #endregion
-
-
-
 
 
 $Window.Showdialog() | Out-Null
