@@ -30,27 +30,12 @@ Import-Module ActiveDirectory
 
         </Grid.RowDefinitions>
 
-        <StatusBar HorizontalAlignment="Center" Height="25" Margin="-2,283,4,0" VerticalAlignment="Top" Width="810" BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2">
-
-            <Label x:Name="Lbl_LoggedUser" Content="User logged in: " Width="600" FontStyle="Italic" FontWeight="SemiBold" Height="25" FontSize="10.667"/>
-
-            <Separator Visibility="Hidden"/>
-
-            <Hyperlink x:Name="Link_feedbacks" NavigateUri="mailto:maxence.caron@bell.ca" ToolTip="Send me an email ! ">
-
-                <Run Text="Questions, Comments, Feedbacks?"/>
-
-            </Hyperlink>
-
-            <Separator Visibility="Hidden"/>
-
-        </StatusBar>
-
+        
         <Menu x:Name="Menubar" Height="37" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="0,0,0,5">
 
             <MenuItem Header="_Mailbox" Height="20" Margin="0" Width="60" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
 
-                <MenuItem x:Name="Menu_MailboxInfo" Header="Mailbox _Details"/>
+                <MenuItem Header="Menu_MailboxInfo"/>
 
                 <MenuItem x:Name="Menu_MailboxPerm" Header="Mailbox _Permissions"/>
 
@@ -185,7 +170,7 @@ Import-Module ActiveDirectory
 
         </Grid>
 
-        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1">
+        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1" Visibility="Hidden">
 
             <StackPanel HorizontalAlignment="Left" Height="61" Margin="140,31,0,0" VerticalAlignment="Top" Width="117">
 
@@ -310,6 +295,11 @@ Import-Module ActiveDirectory
                 <TextBox x:Name="textBox_Copy5" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
             </StackPanel>
         </Grid>
+        <Grid x:Name="Grid_Help" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="264" Margin="10,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="792">
+            <StackPanel HorizontalAlignment="Left" Height="100" Margin="37,26,0,0" VerticalAlignment="Top" Width="100">
+                <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 
@@ -340,7 +330,6 @@ $xaml.SelectNodes("//*[@*[contains(translate(name(.),'n','N'),'Name')]]") | ForE
 
 $whoami = $env:username
 
-$Lbl_LoggedUser.Content = "User logged in: " + $whoami
 
 #endregion
 
