@@ -383,7 +383,7 @@ $Menu_MailboxInfo.Add_Click({
 
     ClearView
     $Grid_MailboxInfo.Visibility = "Visible"
-    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info :: " $whoami
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info :: " + $whoami
 
     })
 
@@ -392,7 +392,7 @@ $Menu_Quota.Add_Click({
 
     Clearview
     $Grid_MailQuota.Visibility = "Visible"
-    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota"
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota :: " + $whoami
 
 })
 
@@ -402,7 +402,7 @@ $Menu_MHCIntraFID.Add_Click({
 
     $Grid_MHCIntraFID.Visibility = "Visible"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - MHC Intranet FID Creation"
+    $Window.Title = "XAML :: Exchange Admin Tools - MHC Intranet FID Creation :: " + $whoami
 
 })
 
@@ -412,7 +412,7 @@ $Menu_OOOF.Add_Click({
 
     $Grid_OOOF.Visibility = "Visible"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - Out Of Office"
+    $Window.Title = "XAML :: Exchange Admin Tools - Out Of Office :: " + $whoami
 
 })
 
@@ -422,7 +422,7 @@ $Menu_EAS.Add_Click({
 
     $Grid_EAS.Visibility = "Visible"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - Active Sync"
+    $Window.Title = "XAML :: Exchange Admin Tools - Active Sync :: " + $whoami
 
 })
 
