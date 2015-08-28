@@ -35,7 +35,7 @@ Import-Module ActiveDirectory
 
             <MenuItem Header="_Mailbox" Height="20" Margin="0" Width="60" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
 
-                <MenuItem x:Name="Menu_MailboxInfo" Header="Menu_MailboxInfo"/>
+                <MenuItem x:Name="Menu_MailboxInfo" Header="Mailbox _Info"/>
 
                 <MenuItem x:Name="Menu_MailboxPerm" Header="Mailbox _Permissions"/>
 
@@ -275,7 +275,7 @@ Import-Module ActiveDirectory
             <Button x:Name="Btn_EnableEAS" Content="Go !" HorizontalAlignment="Left" Margin="125,188,0,0" VerticalAlignment="Top" Width="75"/>
 
         </Grid>
-        <Grid x:Name="Grid_MailboxInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="273" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="806" Visibility="Hidden">
+        <Grid x:Name="Grid_MailboxInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="273" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="806">
             <StackPanel HorizontalAlignment="Left" Height="209" Margin="223,54,0,0" VerticalAlignment="Top" Width="140">
                 <Label x:Name="label" Content="Display Name"/>
                 <Label x:Name="label_Copy" Content="SamAccountName"/>
@@ -286,16 +286,16 @@ Import-Module ActiveDirectory
                 <Label x:Name="label_Copy5" Content="is UM Enabled"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Height="209" Margin="10,54,0,0" VerticalAlignment="Top" Width="208">
-                <TextBox x:Name="textBox" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
-                <TextBox x:Name="textBox_Copy" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
-                <TextBox x:Name="textBox_Copy1" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
-                <TextBox x:Name="textBox_Copy2" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
-                <TextBox x:Name="textBox_Copy3" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
-                <TextBox x:Name="textBox_Copy4" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
-                <TextBox x:Name="textBox_Copy5" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_DN" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_SAM" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_Email" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_SrvExch" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_DB" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_iSEAS" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="Txt_MbxInfo_iSUM" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
             </StackPanel>
         </Grid>
-        <Grid x:Name="Grid_Help" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="264" Margin="10,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="792">
+        <Grid x:Name="Grid_Help" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="264" Margin="10,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="792" Visibility="Hidden">
             <StackPanel HorizontalAlignment="Left" Height="100" Margin="37,26,0,0" VerticalAlignment="Top" Width="100">
                 <Label x:Name="label1" Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
             </StackPanel>
