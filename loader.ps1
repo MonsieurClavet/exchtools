@@ -383,7 +383,7 @@ $Menu_MailboxInfo.Add_Click({
 
     ClearView
     $Grid_MailboxInfo.Visibility = "Visible"
-    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info"
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info :: " $whoami
 
     })
 
