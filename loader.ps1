@@ -35,7 +35,7 @@ Import-Module ActiveDirectory
 
             <MenuItem Header="_Mailbox" Height="20" Margin="0" Width="60" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
 
-                <MenuItem Header="Menu_MailboxInfo"/>
+                <MenuItem x:Name="Menu_MailboxInfo" Header="Menu_MailboxInfo"/>
 
                 <MenuItem x:Name="Menu_MailboxPerm" Header="Mailbox _Permissions"/>
 
