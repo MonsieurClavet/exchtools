@@ -12,7 +12,7 @@ Import-Module ActiveDirectory
 
     Title="XAML :: Exchange Admin Tools" Height="349" Width="812" Background="#FF9E9E9E" Cursor="Hand" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <Grid Margin="0,0,-6,-11">
+    <Grid x:Name="Grid_Mail" Margin="0,0,-6,-11">
 
         <Grid.ColumnDefinitions>
 
@@ -32,7 +32,7 @@ Import-Module ActiveDirectory
 
         <StatusBar HorizontalAlignment="Center" Height="25" Margin="-2,283,4,0" VerticalAlignment="Top" Width="810" BorderThickness="0" Grid.Row="1" Grid.ColumnSpan="2">
 
-            <Label x:Name="Lbl_LoggedUser" Content="User logged in: " Width="600" FontStyle="Italic" FontWeight="SemiBold" Height="23" FontSize="10.667"/>
+            <Label x:Name="Lbl_LoggedUser" Content="User logged in: " Width="600" FontStyle="Italic" FontWeight="SemiBold" Height="25" FontSize="10.667"/>
 
             <Separator Visibility="Hidden"/>
 
@@ -46,7 +46,7 @@ Import-Module ActiveDirectory
 
         </StatusBar>
 
-        <Menu x:Name="Menubar" Height="28" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="0,0,0,5">
+        <Menu x:Name="Menubar" Height="37" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="0,0,0,5">
 
             <MenuItem Header="_Mailbox" Height="20" Margin="0" Width="60" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
 
@@ -94,9 +94,9 @@ Import-Module ActiveDirectory
 
             <Separator Margin="0" Width="62.334" Visibility="Hidden"/>
 
-            <Button x:Name="Btn_SearchUser" Content="Search" Width="59" Height="17" FontSize="9"/>
+            <Button x:Name="Btn_SearchUser" Content="Search" Width="59" Height="25" FontSize="10"/>
 
-            <TextBox x:Name="Txt_Username" Width="174" ToolTip="Specify User to search" IsHitTestVisible="True" AllowDrop="False" FontSize ="9"/>
+            <TextBox x:Name="Txt_Username" Width="174" ToolTip="Specify User to search" IsHitTestVisible="True" AllowDrop="False" FontSize="9.333"/>
 
         </Menu>
 
@@ -122,7 +122,7 @@ Import-Module ActiveDirectory
 
             <TextBox x:Name="Txt_ProhibitSendReceive" HorizontalAlignment="Left" Height="23" Margin="33,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" IsReadOnly="True" Background="#FFB6B6B6"/>
 
-            <Label Content="Prohibit Send Quota" HorizontalAlignment="Left" Margin="194,155,0,0" VerticalAlignment="Top" Width="169"/>
+            <Label Content="Prohibit Send Quota" HorizontalAlignment="Left" Margin="194,155,0,0" VerticalAlignment="Top" Width="160"/>
 
             <Label Content="Prohibit Send/Receive Quota" HorizontalAlignment="Left" Margin="194,183,0,0" VerticalAlignment="Top" Width="169"/>
 
@@ -143,6 +143,7 @@ Import-Module ActiveDirectory
             <Button x:Name="Btn_Calculate" Content="Calculate" HorizontalAlignment="Left" Margin="486,163.993,0,0" VerticalAlignment="Top" Width="75"/>
 
             <Button x:Name="Btn_ApplyQuota" Content="Apply Quota" HorizontalAlignment="Left" Margin="566,163.993,0,0" VerticalAlignment="Top" Width="75"/>
+            <Grid HorizontalAlignment="Left" Height="51" Margin="248,43,0,0" VerticalAlignment="Top" Width="73"/>
 
 
 
@@ -184,45 +185,44 @@ Import-Module ActiveDirectory
 
         </Grid>
 
-        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808"  Visibility="Hidden" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1" IsEnabled="True">
+        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1" Visibility="Hidden">
 
             <StackPanel HorizontalAlignment="Left" Height="61" Margin="140,31,0,0" VerticalAlignment="Top" Width="117">
 
-                <RadioButton x:Name="Rd_MHCFID_BC" Content="Bell Canada" FontSize="12"/>
+                <RadioButton Content="Bell Canada" FontSize="12"/>
 
-                <RadioButton x:Name="Rd_MHCFID_BM" Content="Bell Mobility" FontSize="12"/>
+                <RadioButton Content="Bell Mobility" FontSize="12"/>
 
-                <RadioButton x:Name="Rd_MHCFID_BEV" Content="Bell Express Vu" FontSize="12"/>
+                <RadioButton Content="Bell Express Vu" FontSize="12"/>
 
-                <RadioButton x:Name="Rd_MHCFID_BDI" Content="Bell Distribution" FontSize="12"/>
+                <RadioButton Content="Bell Distribution" FontSize="12"/>
 
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Left" Height="128" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
 
-                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap" />
+                <TextBox Height="23" TextWrapping="Wrap"/>
 
-                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap" />
+                <TextBox Height="23" TextWrapping="Wrap"/>
 
-                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap" />
+                <TextBox Height="23" TextWrapping="Wrap"/>
 
-                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap" />
-
-                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap"/>
+                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox Height="23" TextWrapping="Wrap"/>
 
             </StackPanel>
 
-            <StackPanel HorizontalAlignment="Left" Height="128" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
+            <StackPanel HorizontalAlignment="Left" Height="129" Margin="39,103,0,0" VerticalAlignment="Top" Width="100">
 
-                <Label Content="SamAccountName" HorizontalAlignment="Right" FontSize="10"/>
+                <Label Content="Alias" HorizontalAlignment="Right" FontSize="10.667"/>
 
-                <Label Content="Display Name" HorizontalAlignment="Right" FontSize="10"/>
+                <Label Content="Display Name" HorizontalAlignment="Right" FontSize="10.667"/>
 
-                <Label Content="Email Address" HorizontalAlignment="Right" FontSize="10"/>
+                <Label Content="Email Address" HorizontalAlignment="Right" FontSize="10.667"/>
 
-                <Label Content="Owner" HorizontalAlignment="Right" FontSize="10"/>
+                <Label Content="Owner" HorizontalAlignment="Right" FontSize="10.667"/>
 
-                <Label Content="Backup Owner" HorizontalAlignment="Right" FontSize="10"/>
+                <Label Content="Backup Owner" HorizontalAlignment="Right" FontSize="10.667"/>
 
             </StackPanel>
 
@@ -290,6 +290,18 @@ Import-Module ActiveDirectory
             <Button x:Name="Btn_EnableEAS" Content="Go !" HorizontalAlignment="Left" Margin="125,188,0,0" VerticalAlignment="Top" Width="75"/>
 
         </Grid>
+        <Grid x:Name="Grid_MailboxInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="273" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="806" Visibility="Hidden">
+            <StackPanel HorizontalAlignment="Left" Height="100" Margin="19,54,0,0" VerticalAlignment="Top" Width="72">
+                <Label x:Name="label" Content="Label"/>
+                <Label x:Name="label_Copy" Content="Label"/>
+                <Label x:Name="label_Copy1" Content="Label"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Height="100" Margin="56,54,0,0" VerticalAlignment="Top" Width="100">
+                <TextBox x:Name="textBox" Height="27" TextWrapping="Wrap" Text="TextBox"/>
+                <TextBox x:Name="textBox_Copy" Height="27" TextWrapping="Wrap" Text="TextBox"/>
+                <TextBox x:Name="textBox_Copy1" Height="27" TextWrapping="Wrap" Text="TextBox"/>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 
@@ -337,6 +349,8 @@ Function ClearView{
 
     $Grid_EAS.Visibility = "Hidden"
 
+    $Grid_MailboxInfo.Visibility = "Hidden"
+
 }
 
 #Function MsgBox([string]$arg1, [string]$arg2){
@@ -354,7 +368,11 @@ $Menu_MailboxPerm.Add_Click({
 
     ClearView
 
+    $Grid_MailboxInfo.Visibility = "Visible"
+
     $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Permission"
+
+
 
 })
 
