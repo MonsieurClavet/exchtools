@@ -375,22 +375,23 @@ Function ClearView{
 
 $Menu_MailboxPerm.Add_Click({
 
+
+    })
+    
+
+$Menu_MailboxInfo.Add_Click({
+
     ClearView
-
     $Grid_MailboxInfo.Visibility = "Visible"
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Permission"
+    })
 
-
-
-})
 
 $Menu_Quota.Add_Click({
 
     Clearview
-
     $Grid_MailQuota.Visibility = "Visible"
-
     $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota"
 
 })
