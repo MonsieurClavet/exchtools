@@ -507,6 +507,8 @@ $Btn_Calculate.Add_Click({
 
 $Btn_ApplyQuota.Add_Click({
 
+    $User2search = $Txt_Username.Text
+
     $NewIssueWarningQuota = $Txt_NewIssueWarn.Text
     $NewProhibitSendQuota = $Txt_CalcNewProhibit.Text
     $NewProhibitSendReceiveQuota = $Txt_NewProhibSendRecv.Text
@@ -518,6 +520,8 @@ $Btn_ApplyQuota.Add_Click({
     write-host "Issue Warning) " $NewIssueWarningQuota
     write-host "Prohibit Send) " $NewProhibitSendQuota
     write-host "Prohibit S/R ) " $NewProhibitSendReceiveQuota  
+
+    Set-Mailbox -Identity $User2search -UseDatabaseQuotaDefaults:$False -ProhibitSendQuota $NewProhibitSendQuota -IssueWarningQuota $NewIssueWarningQuota -ProhibitSendReceiveQuota $NewProhibitSendReceiveQuota
 
     })
 
@@ -555,7 +559,7 @@ $Btn_ApplyOOOF.Add_Click({
             [System.Windows.Forms.MessageBox]::Show("Out of Office has been disabled for `n" + $OOOFUser ,"Out of Office Disabled")
         }
 
-    })
+})
 
 #endregion 
 
