@@ -50,11 +50,11 @@ Import-Module ActiveDirectory
 
             <MenuItem Header="_Mailbox" Height="20" Margin="0" Width="60" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" HorizontalContentAlignment="Center">
 
-                <MenuItem x:Name"Menu_Mailboxinfo" Header="Mailbox_Details"/>
+                <MenuItem Header="Mailbox _Details"/>
 
-                <MenuItem x:Name="Menu_MailboxPerm" Header="Mailbox_Permissions"/>
+                <MenuItem x:Name="Menu_MailboxPerm" Header="Mailbox _Permissions"/>
 
-                <MenuItem x:Name="Menu_Quota" Header="Mailbox_Quota"/>
+                <MenuItem x:Name="Menu_Quota" Header="Mailbox _Quota"/>
 
             </MenuItem>
 
@@ -383,7 +383,7 @@ $Menu_MailboxInfo.Add_Click({
 
     ClearView
     $Grid_MailboxInfo.Visibility = "Visible"
-    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info :: Logged as " + $whoami
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox General Info"
 
     })
 
@@ -392,7 +392,7 @@ $Menu_Quota.Add_Click({
 
     Clearview
     $Grid_MailQuota.Visibility = "Visible"
-    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota :: Logged as" + $whoami 
+    $Window.Title = "XAML :: Exchange Admin Tools - Mailbox Quota"
 
 })
 
@@ -402,7 +402,7 @@ $Menu_MHCIntraFID.Add_Click({
 
     $Grid_MHCIntraFID.Visibility = "Visible"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - MHC Intranet FID Creation :: Logged as" + $whoami
+    $Window.Title = "XAML :: Exchange Admin Tools - MHC Intranet FID Creation"
 
 })
 
@@ -412,7 +412,7 @@ $Menu_OOOF.Add_Click({
 
     $Grid_OOOF.Visibility = "Visible"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - Out Of Office :: Logged as" + $whoami
+    $Window.Title = "XAML :: Exchange Admin Tools - Out Of Office"
 
 })
 
@@ -422,7 +422,7 @@ $Menu_EAS.Add_Click({
 
     $Grid_EAS.Visibility = "Visible"
 
-    $Window.Title = "XAML :: Exchange Admin Tools - Active Sync :: Logged as" + $whoami 
+    $Window.Title = "XAML :: Exchange Admin Tools - Active Sync"
 
 })
 
