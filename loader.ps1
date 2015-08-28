@@ -185,7 +185,7 @@ Import-Module ActiveDirectory
 
         </Grid>
 
-        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1" Visibility="Hidden">
+        <Grid x:Name="Grid_MHCIntraFID" HorizontalAlignment="Left" Height="263" VerticalAlignment="Top" Width="808" Grid.ColumnSpan="2" Margin="4,10,0,0" Grid.Row="1">
 
             <StackPanel HorizontalAlignment="Left" Height="61" Margin="140,31,0,0" VerticalAlignment="Top" Width="117">
 
@@ -201,14 +201,14 @@ Import-Module ActiveDirectory
 
             <StackPanel HorizontalAlignment="Left" Height="128" Margin="140,104,0,0" VerticalAlignment="Top" Width="206">
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Alias" Height="23" TextWrapping="Wrap"/>
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_DN" Height="23" TextWrapping="Wrap"/>
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Email" Height="23" TextWrapping="Wrap"/>
 
-                <TextBox Height="23" TextWrapping="Wrap"/>
-                <TextBox Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Owner" Height="23" TextWrapping="Wrap"/>
+                <TextBox x:Name="Txt_MHCFID_Backup" Height="23" TextWrapping="Wrap"/>
 
             </StackPanel>
 
@@ -291,21 +291,30 @@ Import-Module ActiveDirectory
 
         </Grid>
         <Grid x:Name="Grid_MailboxInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="273" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="806" Visibility="Hidden">
-            <StackPanel HorizontalAlignment="Left" Height="100" Margin="19,54,0,0" VerticalAlignment="Top" Width="72">
-                <Label x:Name="label" Content="Label"/>
-                <Label x:Name="label_Copy" Content="Label"/>
-                <Label x:Name="label_Copy1" Content="Label"/>
+            <StackPanel HorizontalAlignment="Left" Height="209" Margin="223,54,0,0" VerticalAlignment="Top" Width="140">
+                <Label x:Name="label" Content="Display Name"/>
+                <Label x:Name="label_Copy" Content="SamAccountName"/>
+                <Label x:Name="label_Copy1" Content="Email Address"/>
+                <Label x:Name="label_Copy2" Content="Server Exchange Name"/>
+                <Label x:Name="label_Copy3" Content="Database Name"/>
+                <Label x:Name="label_Copy4" Content="is ActiveSync Enabled"/>
+                <Label x:Name="label_Copy5" Content="is UM Enabled"/>
             </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Height="100" Margin="56,54,0,0" VerticalAlignment="Top" Width="100">
-                <TextBox x:Name="textBox" Height="27" TextWrapping="Wrap" Text="TextBox"/>
-                <TextBox x:Name="textBox_Copy" Height="27" TextWrapping="Wrap" Text="TextBox"/>
-                <TextBox x:Name="textBox_Copy1" Height="27" TextWrapping="Wrap" Text="TextBox"/>
+            <StackPanel HorizontalAlignment="Left" Height="209" Margin="10,54,0,0" VerticalAlignment="Top" Width="208">
+                <TextBox x:Name="textBox" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="textBox_Copy" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="textBox_Copy1" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="textBox_Copy2" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="textBox_Copy3" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="textBox_Copy4" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
+                <TextBox x:Name="textBox_Copy5" Height="27" TextWrapping="Wrap" IsReadOnly="True"/>
             </StackPanel>
         </Grid>
 
     </Grid>
 
 </Window>
+
 
 "@
 
